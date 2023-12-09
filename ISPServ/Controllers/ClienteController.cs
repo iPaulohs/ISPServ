@@ -59,6 +59,4 @@ namespace ISPServ.Controllers
             return Ok("Cliente inativado com sucesso.");
         }
     }
-
-
 }

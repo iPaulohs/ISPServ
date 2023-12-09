@@ -8,9 +8,10 @@ namespace ISPServ.DTO
     {
         public MappingProfile()
         {
-            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
+            CreateMap<Usuario, AdminDTO>().ReverseMap();
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
-            CreateMap<Endereco, EnderecoDTO>().ReverseMap();    
+            CreateMap<Endereco, EnderecoDTO>().ReverseMap(); 
+            CreateMap<Superadmin, SuperadminDTO>().ReverseMap();
         }
     }
 }

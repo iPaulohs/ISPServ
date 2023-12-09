@@ -41,7 +41,7 @@ namespace ISPServ.Domain.User
 
         [Required]
         [Column(TypeName = "BIT")]
-        public bool IsSuperadmin { get; set; }
+        public bool IsSuperadmin { get; set; } = false;
 
         [Column(TypeName = "DATE")]
         public DateOnly? DataInativacao { get; set; }

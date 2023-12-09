@@ -24,7 +24,7 @@ namespace ISPServ.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> RegistroUsuario([FromBody] UsuarioDTO modelo)
+        public async Task<ActionResult> RegistroUsuario([FromBody] AdminDTO modelo)
         {
             var usuarioIdDTO = $"[{modelo.CPF.GetHashCode().ToString().Replace("-", "")}]";
             var usuarioUsernamedDTO = $"{modelo.CPF.Replace(".", "").Replace("-", "")}@{GeraPassword(modelo.Nome).TrimEnd().Normalize()}";

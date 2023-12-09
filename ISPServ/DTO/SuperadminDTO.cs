@@ -1,6 +1,6 @@
 ﻿namespace ISPServ.DTO
 {
-    public record UsuarioDTO
+    public class SuperadminDTO 
     {
         public string? Nome { get; set; }
 
@@ -14,7 +14,7 @@
 
         public DateTime DataNascimento { get; set; }
 
-        public bool IsSuperadmin { get; set; } = false;
+        public string? SenhaSuperadmin { get; set; }
 
         public string? CPF { get; set; }
     }
