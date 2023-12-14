@@ -16,5 +16,7 @@ namespace ISPServ.Domain
         [Required]
         [Column(TypeName = "VARCHAR(30)")]
         public string? Modelo { get; set; }
+
+        public DateOnly DataInativacao { get; set; }
     }
 }

@@ -5,7 +5,8 @@ namespace ISPServ.Repository
 {
     public interface IUsuarioRepository
     {
-        public bool InativarUsuario(string clienteParam);
+        public bool InativarAdmin(string cpf);
+        public bool InativarSuperadmin(string cpf);
         public void AddAdmin(Admin usuario);
         public void AddSuperadmin(Superadmin usuario);
         public List<SuperadminDTO> GetSuperadmins();

@@ -25,6 +25,11 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<ITecnologiaRepository, TecnologiaRepository>();
+builder.Services.AddScoped<IOLTRepository, OLTRepository>();
+builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
+builder.Services.AddScoped<IConexaoRepository, ConexaoRepository>();
+builder.Services.AddScoped<ICTORepository, CTORepository>();
 
 
 //Configurações do Identity

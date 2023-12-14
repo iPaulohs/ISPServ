@@ -25,10 +25,20 @@ namespace ISPServ.Controllers
             return _usuarioRepository.GetSuperadmins();
         }
 
-        [HttpPatch("inativar")]
-        public async Task<ActionResult> InativarUsuario([FromBody] string clienteParam)
+        [HttpDelete("inativaradmin/{cpf}")]
+        public async Task<ActionResult> InativarAdmin([FromBody] string cpf)
         {
-            if (!_usuarioRepository.InativarUsuario(clienteParam))
+            if (!_usuarioRepository.InativarAdmin(cpf))
+            {
+                return BadRequest("O usuário não foi inativado. Favor repetir o processo.");
+            }
+            return Ok("Usuário inativado com sucesso.");
+        }
+
+        [HttpDelete("inativarsuperadmin/{cpf}")]
+        public async Task<ActionResult> InativarSuperadmin([FromBody] string cpf)
+        {
+            if (!_usuarioRepository.InativarSuperadmin(cpf))
             {
                 return BadRequest("O usuário não foi inativado. Favor repetir o processo.");
             }
@@ -71,16 +81,16 @@ namespace ISPServ.Controllers
             return Ok("Usuário registrado com sucesso.");
         }
 
-        [HttpPatch("editaradmin")]
-        public void EditarAdmin(string superadminCpf, AdminDTO adminDTO)
+        [HttpPatch("editaradmin/{cpf}")]
+        public void EditarAdmin(string cpf, AdminDTO adminDTO)
         {
-            _usuarioRepository.EditarAdmin(superadminCpf, adminDTO);
+            _usuarioRepository.EditarAdmin(cpf, adminDTO);
         }
 
-        [HttpPatch("editarsuperadmin")]
-        public void EditarSuperAdmin(string superadminCpf, SuperadminDTO superadminDTO)
+        [HttpPatch("editarsuperadmin/{cpf}")]
+        public void EditarSuperAdmin(string cpf, SuperadminDTO superadminDTO)
         {
-           _usuarioRepository.EditarSuperadmin(superadminCpf, superadminDTO);
+           _usuarioRepository.EditarSuperadmin(cpf, superadminDTO);
         }
     }
 }

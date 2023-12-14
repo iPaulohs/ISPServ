@@ -10,8 +10,7 @@ namespace ISPServ.Controllers
     [Route("/clientes")]
     public class ClienteController(IClienteRepository clienteRepository, IMapper mapper) : Controller
     {
-        private readonly IClienteRepository _clienteRepository = clienteRepository;
-        private readonly IMapper _mapper = mapper;  
+        private readonly IClienteRepository _clienteRepository = clienteRepository;  
 
         [HttpPost("adicionar")]
         public async Task<ActionResult> AddCliente([FromBody] ClienteDTO cliente)
@@ -50,11 +49,11 @@ namespace ISPServ.Controllers
         }
 
         [HttpPatch("inativar")]
-        public async Task<ActionResult> InativarCliente([FromBody] string clienteParam)
+        public ActionResult InativarCliente([FromBody] string clienteParam)
         {
             if (!_clienteRepository.InativarCliente(clienteParam))
             {
-                return BadRequest("O cliente não foi inativado. Verificar Logs.");
+                return BadRequest("Cliente não encontrado.");
             }
             return Ok("Cliente inativado com sucesso.");
         }

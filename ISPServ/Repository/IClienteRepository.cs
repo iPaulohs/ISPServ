@@ -8,6 +8,7 @@ namespace ISPServ.Repository
     {
         public Task AddCliente(Cliente cliente);
         public List<Cliente> GetClientes();
-        public bool InativarCliente([FromBody] string clienteParamID);
+        public bool InativarCliente(string clienteParamID);
+        public void EditarCliente(string cpf, ClienteDTO cliente);
     }
 }

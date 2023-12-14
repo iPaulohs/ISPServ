@@ -23,14 +23,28 @@ namespace ISPServ.Repository
             return superadmins;
         }
 
-        public bool InativarUsuario([FromBody] string usuarioParamCPF)
+        public bool InativarAdmin([FromBody] string cpf)
         {
-            var listUsuarios = _db.Users.ToList();
-            var usuario = listUsuarios.Find(c => c.CPF == usuarioParamCPF);
+            var listUsuarios = _db.Admins.ToList();
+            var admin = listUsuarios.Find(c => c.CPF == cpf);
 
-            if (usuario != null)
+            if (admin != null)
             {
-                usuario.DataInativacao = DateOnly.FromDateTime(DateTime.Now);
+                admin.DataInativacao = DateOnly.FromDateTime(DateTime.Now);
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool InativarSuperadmin([FromBody] string cpf)
+        {
+            var listUsuarios = _db.Superadmins.ToList();
+            var admin = listUsuarios.Find(c => c.CPF == cpf);
+
+            if (admin != null)
+            {
+                admin.DataInativacao = DateOnly.FromDateTime(DateTime.Now);
                 _db.SaveChanges();
                 return true;
             }
@@ -52,8 +66,8 @@ namespace ISPServ.Repository
         public void EditarSuperadmin(string superadminCpf, SuperadminDTO superadminDTO)
         {
             var superadmin = _db.Superadmins.ToList().Find(s => s.CPF == superadminCpf);
-            
-            if(superadmin != null)
+
+            if (superadmin != null)
             {
                 superadmin.CPF = superadminDTO.CPF;
                 superadmin.Nome = superadminDTO.Nome;
